@@ -9,9 +9,11 @@
 </head>
 <body>
   <main ng-app="SigmanautApp" ng-controller="SigmanautController as sigmanaut">
-    
+
     <section class="container">
-      <h1>Sigmanaut's angular list</h1>
+      <div class="jumbotron">
+        <h1>Sigmanaut's angular list</h1>
+      </div>
       <h3>Add a new person</h3>
       <form class="col-md-12">
         <div class="form-group col-md-6">
@@ -28,7 +30,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="shoutout">Shoutout</label>
-          <input type="text" name="shoutout" class="form-control" ng-model="sigmanaut.newPerson.shoutout" placeholder="Shoutout"/>
+          <input type="text" name="shoutout" class="form-control" ng-model="sigmanaut.newPerson.shoutout" placeholder="Shout Out"/>
         </div>
         <div class="form-group col-md-12">
           <button class="btn btn-primary" ng-click="sigmanaut.createPerson()">Add Person</button>
@@ -38,8 +40,10 @@
 
     <section class="container">
       <h3>Class List</h3>
-      <label for="filter">Search:</label>
-      <input type="text" name="filter" value="" placeholder="Search" ng-model="query">
+      <div class="form-group">
+        <label for="filter">Search:</label>
+        <input type="text" class="form-control" name="filter" value="" placeholder="Search" ng-model="query">
+      </div>
       <ul class="list-group">
         <li class="list-group-item" ng-repeat="person in sigmanaut.people | filter:query">
           <a ng-href="https://github.com/{{person.git_username}}" target="_blank">{{person.firstName}} {{person.lastName}}</a>
