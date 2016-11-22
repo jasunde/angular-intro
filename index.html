@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
 </head>
 <body>
-  <main ng-app="SigmanautApp" ng-controller="SigmanautController as sigmanaut">
+  <main ng-app="SigmanautApp" ng-controller="SigmanautController">
 
     <section class="container">
       <div class="jumbotron">
@@ -18,22 +18,22 @@
       <form class="col-md-12">
         <div class="form-group col-md-6">
           <label for="firstName">First Name</label>
-          <input type="text" name="firstName" class="form-control" ng-model="sigmanaut.newPerson.firstName" placeholder="First Name"/>
+          <input type="text" name="firstName" class="form-control" ng-model="newPerson.firstName" placeholder="First Name"/>
         </div>
         <div class="form-group col-md-6">
           <label for="lastName">Last Name</label>
-          <input type="text" name="lastName" class="form-control" ng-model="sigmanaut.newPerson.lastName" placeholder="Last Name"/>
+          <input type="text" name="lastName" class="form-control" ng-model="newPerson.lastName" placeholder="Last Name"/>
         </div>
         <div class="form-group col-md-6">
           <label for="git_username">Git Username</label>
-          <input type="text" name="git_username" class="form-control" ng-model="sigmanaut.newPerson.git_username" placeholder="Git Username"/>
+          <input type="text" name="git_username" class="form-control" ng-model="newPerson.git_username" placeholder="Git Username"/>
         </div>
         <div class="form-group col-md-6">
           <label for="shoutout">Shoutout</label>
-          <input type="text" name="shoutout" class="form-control" ng-model="sigmanaut.newPerson.shoutout" placeholder="Shout Out"/>
+          <input type="text" name="shoutout" class="form-control" ng-model="newPerson.shoutout" placeholder="Shout Out"/>
         </div>
         <div class="form-group col-md-12">
-          <button class="btn btn-primary" ng-click="sigmanaut.createPerson()">Add Person</button>
+          <button class="btn btn-primary" ng-click="createPerson()">Add Person</button>
         </div>
       </form>
     </section>
@@ -45,7 +45,7 @@
         <input type="text" class="form-control" name="filter" value="" placeholder="Search" ng-model="query">
       </div>
       <ul class="list-group">
-        <li class="list-group-item" ng-repeat="person in sigmanaut.people | filter:query">
+        <li class="list-group-item" ng-repeat="person in people | filter: {firstName, lastName:query}">
           <a ng-href="https://github.com/{{person.git_username}}" target="_blank">{{person.firstName}} {{person.lastName}}</a>
           - {{person.shoutout}}
         </li>

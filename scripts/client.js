@@ -1,11 +1,9 @@
 var sigmanautApp = angular.module('SigmanautApp', []);
 
-sigmanautApp.controller('SigmanautController', function(){
+sigmanautApp.controller('SigmanautController', ['$scope', function($scope){
   console.log('Sigmanaut controller loaded');
 
-  var self = this; // holds the value of this
-
-  self.people = [
+  $scope.people = [
     {
       "firstName": "Luke",
       "lastName": "Schlangen",
@@ -14,11 +12,11 @@ sigmanautApp.controller('SigmanautController', function(){
     }
   ];
 
-  self.newPerson = {};
+  $scope.newPerson = {};
 
-  self.createPerson = function(){
-    console.log(self.newPerson);
-    self.people.push(angular.copy(self.newPerson));
+  $scope.createPerson = function(){
+    console.log($scope.newPerson);
+    $scope.people.push(angular.copy($scope.newPerson));
   };
 
-});
+}]);
